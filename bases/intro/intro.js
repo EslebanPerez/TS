@@ -1,4 +1,5 @@
 // Clases
+/*
 class Drink{
   constructor(name){
     this.name = name;
@@ -33,3 +34,4 @@ class Beer extends Drink{
 
 const beer = new Beer('XX', 3.5);
 console.log(beer.info());
+*/
