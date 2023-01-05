@@ -56,10 +56,16 @@ class Snack implements Product{
   }
 }
 
+const productos : Product[]= [
+  new Beer("XX", 8.5, 48 ),
+  new Snack("Papas", 40),
+  new Beer("Victoria", 3.5, 20 ),
+];
 
-const beer = new Beer("XX", 8.5, 48 )
-console.log(beer.info());
+function getPrices(items: Product[]){
+  for(const item of items){
+    console.log(item.getPrice());
+  }
+}
 
-const papitas = new Snack("papas", 40);
-console.log(papitas.name);
-console.log(papitas.getPrice());
+getPrices(productos)

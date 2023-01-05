@@ -34,8 +34,14 @@ class Snack {
         return "El precio es: $" + this.price;
     }
 }
-const beer = new Beer("XX", 8.5, 48);
-console.log(beer.info());
-const papitas = new Snack("papas", 40);
-console.log(papitas.name);
-console.log(papitas.getPrice());
+const productos = [
+    new Beer("XX", 8.5, 48),
+    new Snack("Papas", 40),
+    new Beer("Victoria", 3.5, 20),
+];
+function getPrices(items) {
+    for (const item of items) {
+        console.log(item.getPrice());
+    }
+}
+getPrices(productos);
