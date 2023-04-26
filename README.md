@@ -78,6 +78,21 @@ let spiderman: boolean;
 let AmericanCapitain: boolean = true;
 ```
 
+## Funciones
+Para indicar el tipo que retorna una función se coloca `:tipo` después de los parámetros y antes de los `{}`
 
 
+```
+function returnName():string {
+    return hero;
+}
+```
+## Funciones con argumentos obligatorios
+Indicar el tipo de cada uno de los argumentos que recibe la función 
+
+```
+const fullName= (firstName:string, lastName?:(string)):string => {
+    return `${firstName} ${lastName}`;
+ }
+```
 
