@@ -142,4 +142,10 @@ El uso de parametros por defecto es similar al de los argumentos opcionales, per
   const fullName = ( firstName:string, ...restArg:string[]): string =>{
     return `${firstName} ${restArg.join(" ")}`
   } 
+
+  const superman = fullName("Clark");
+  const superman2 = fullName("Clark", "Joseph");
+  const superman3 = fullName("Clark", "Joseph", "Kent" );
+  const superman4 = fullName("Clark", "Joseph", "Kent", "Superman" );
+
   ```
