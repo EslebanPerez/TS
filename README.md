@@ -92,7 +92,29 @@ Indicar el tipo de cada uno de los argumentos que recibe la función
 
 ```
 const fullName= (firstName:string, lastName?:(string)):string => {
-    return `${firstName} ${lastName}`;
- }
+  return `${firstName} ${lastName}`;
+}
+
+const name = fullName("Steve", "Rogers");
+```
+```console
+{ name: 'Steve Rogers'}
+```
+
+
+## Funciones con argumentos opcionales
+Para indicar que un argumento es opcional se coloca `?` después del nombre del argumento.
+Al no recibir el argumento, este se convierte en `undefined` por lo que, en caso de utilizar este argumento dentro de la función este debe tener un valor por el cual debe ser reemplazado.
+
+```
+const fullName= (firstName:string, lastName?:(string)):string => {
+  return `${firstName} ${lastName || "-"}`;
+}
+
+const name = fullName("Steve");
+```
+
+```console
+{ name: 'Steve -'}
 ```
 
