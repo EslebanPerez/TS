@@ -117,4 +117,20 @@ const name = fullName("Steve");
 ```console
 { name: 'Steve -'}
 ```
+Seguido de parametros por opcionales, no es posible colocar parametros despues de estos, ya que no es permitido por TypeScript.
 
+## Funciones con parámetros por defecto
+El uso de parametros por defecto es similar al de los argumentos opcionales, pero en este caso se debe indicar el valor por defecto que tendrá el argumento en caso de no recibirlo.
+
+```
+  const fullName = (firstName: string, lastname?: string, upper: boolean= true): string =>{
+    if(upper){
+      return `${firstName} ${lastname || '---'}`.toLocaleUpperCase();
+    }else{
+      return `${firstName} ${lastname || '---'}`;
+    }
+  }
+
+  const name = fullName("Steve", "Rogers", false);
+  console.log({name});
+  ```
