@@ -134,3 +134,12 @@ El uso de parametros por defecto es similar al de los argumentos opcionales, per
   const name = fullName("Steve", "Rogers", false);
   console.log({name});
   ```
+
+  ## Argumentos REST
+  Independientemente del número de argumentos que reciba la función, se puede indicar que se recibirá un número indeterminado de argumentos, para esto se debe colocar `...` antes del nombre del argumento.
+
+  ```
+  const fullName = ( firstName:string, ...restArg:string[]): string =>{
+    return `${firstName} ${restArg.join(" ")}`
+  } 
+  ```
