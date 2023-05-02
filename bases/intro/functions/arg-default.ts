@@ -4,7 +4,6 @@
       return `${firstName} ${lastname || '---'}`.toLocaleUpperCase();
     }else{
       return `${firstName} ${lastname || '---'}`;
-
     }
   }
 

@@ -133,12 +133,12 @@ El uso de parametros por defecto es similar al de los argumentos opcionales, per
 
   const name = fullName("Steve", "Rogers", false);
   console.log({name});
-  ```
+```
 
-  ## Argumentos REST
-  Independientemente del número de argumentos que reciba la función, se puede indicar que se recibirá un número indeterminado de argumentos, para esto se debe colocar `...` antes del nombre del argumento.
+## Argumentos REST
+Independientemente del número de argumentos que reciba la función, se puede indicar que se recibirá un número indeterminado de argumentos, para esto se debe colocar `...` antes del nombre del argumento.
 
-  ```
+```
   const fullName = ( firstName:string, ...restArg:string[]): string =>{
     return `${firstName} ${restArg.join(" ")}`
   } 
@@ -148,4 +148,26 @@ El uso de parametros por defecto es similar al de los argumentos opcionales, per
   const superman3 = fullName("Clark", "Joseph", "Kent" );
   const superman4 = fullName("Clark", "Joseph", "Kent", "Superman" );
 
-  ```
+```
+
+## Tipo función
+Se puede indicar que una variable es de tipo función, para esto, después de los dos puntos, se debe indicar el tipo de dato que retorna la función y el tipo de dato de los argumentos que recibe la función.
+
+```
+  const greet = (name: string) => `Hola ${name}`;
+
+  let myFunction: (y:string)=>string;
+
+  let myFunction;
+
+  myFunction = greet; // No se crea una copia de la función, se pasa la referencia de la función
+
+  console.log(myFunction("Evan"));
+
+```
+
+Se puede indicar a una variable que solo sea de tipo función
+```
+let myFunction: Function;
+```
+Al indicar que la variable es de tipo función se verifica que este cumpla con los argumentos y el tipo de dato que retorna.
