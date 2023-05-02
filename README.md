@@ -171,3 +171,15 @@ Se puede indicar a una variable que solo sea de tipo función
 let myFunction: Function;
 ```
 Al indicar que la variable es de tipo función se verifica que este cumpla con los argumentos y el tipo de dato que retorna.
+
+## Funcion que no retorna nada
+Cuando una función no _retorna_ nada, se debe indicar que el tipo de dato que retorna es `void`
+
+```
+  const greet = (name: string): void => {
+    console.log(`Hola ${name}`);
+  }
+
+  greet("Evan");
+
+```
