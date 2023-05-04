@@ -87,7 +87,7 @@ function returnName():string {
     return hero;
 }
 ```
-## Funciones con argumentos obligatorios
+### Funciones con argumentos obligatorios
 Indicar el tipo de cada uno de los argumentos que recibe la función 
 
 ```
@@ -102,7 +102,7 @@ const name = fullName("Steve", "Rogers");
 ```
 
 
-## Funciones con argumentos opcionales
+### Funciones con argumentos opcionales
 Para indicar que un argumento es opcional se coloca `?` después del nombre del argumento.
 Al no recibir el argumento, este se convierte en `undefined` por lo que, en caso de utilizar este argumento dentro de la función este debe tener un valor por el cual debe ser reemplazado.
 
@@ -117,10 +117,10 @@ const name = fullName("Steve");
 ```console
 { name: 'Steve -'}
 ```
-Seguido de parametros por opcionales, no es posible colocar parametros despues de estos, ya que no es permitido por TypeScript.
+Seguido de parámetros por opcionales, no es posible colocar parámetros después de estos, ya que no es permitido por TypeScript.
 
-## Funciones con parámetros por defecto
-El uso de parametros por defecto es similar al de los argumentos opcionales, pero en este caso se debe indicar el valor por defecto que tendrá el argumento en caso de no recibirlo.
+### Funciones con parámetros por defecto
+El uso de parámetros por defecto es similar al de los argumentos opcionales, pero en este caso se debe indicar el valor por defecto que tendrá el argumento en caso de no recibirlo.
 
 ```
   const fullName = (firstName: string, lastname?: string, upper: boolean= true): string =>{
@@ -135,7 +135,7 @@ El uso de parametros por defecto es similar al de los argumentos opcionales, per
   console.log({name});
 ```
 
-## Argumentos REST
+### Argumentos REST
 Independientemente del número de argumentos que reciba la función, se puede indicar que se recibirá un número indeterminado de argumentos, para esto se debe colocar `...` antes del nombre del argumento.
 
 ```
@@ -150,7 +150,7 @@ Independientemente del número de argumentos que reciba la función, se puede in
 
 ```
 
-## Tipo función
+### Tipo función
 Se puede indicar que una variable es de tipo función, para esto, después de los dos puntos, se debe indicar el tipo de dato que retorna la función y el tipo de dato de los argumentos que recibe la función.
 
 ```
@@ -172,7 +172,7 @@ let myFunction: Function;
 ```
 Al indicar que la variable es de tipo función se verifica que este cumpla con los argumentos y el tipo de dato que retorna.
 
-## Funcion que no retorna nada
+### Funcion que no retorna nada
 Cuando una función no _retorna_ nada, se debe indicar que el tipo de dato que retorna es `void`
 
 ```
@@ -182,4 +182,125 @@ Cuando una función no _retorna_ nada, se debe indicar que el tipo de dato que r
 
   greet("Evan");
 
+```
+
+## Tipos Personalizados
+
+### Objetos básicos
+
+En Typescript al igual que en Javascript se pueden crear Objetos
+
+```Terminal
+  let flash:  = {
+    name: "Barry Allen",
+    age: 24,
+    powers: ["Super velocidad", "Viajar en el tiempo"],
+  }
+```
+
+### Crear Objetos con tipos específicos
+
+En Typescript los se pueden declarar objetos especificando el tipo de dato que tendrá cada una de las propiedades del objeto.
+La declaración de tipos específicos se debe indicar después de la variable
+
+```Terminal
+  let flash: {name: string, age: number, powers: string[]} = {
+    name: "Barry Allen",
+    age: 24,
+    powers: ["Super velocidad", "Viajar en el tiempo"],
+  }
+```
+
+### Crear metodos dentro de objetos
+
+Al igual que se pueden declarar métodos dentro de ellos:
+  
+```Terminal
+  let flash: { getName: () => string} = {
+    getName(){
+      return this.name;
+    }
+  }
+```
+
+Los métodos pueden retornar o no algún valor, en caso de no retornar nada se debe indicar que el tipo de dato que retorna es `void`
+
+```Terminal
+  let flash: { getName: () => void} = {
+    getName(){
+      console.log(this.name);
+    }
+  }
+```
+
+Para retornar algún valor el método debe indicar el tipo de dato que retorna
+
+```Terminal
+  let flash: { getName: () => string} = {
+    getName(){
+      return this.name;
+    }
+  }
+```
+
+### Tipos personoalizados
+
+Para declarar objetos personalizados se deben crear con la palabra reservada `type` y declarando el objeto con sus propiedades y tipos de datos.
+
+```Terminal
+// Declaración de tipo personalizado
+  type Hero = {
+    name: string;
+    age: number;
+    powers: string[];
+    getName?: () => string;
+  }
+
+// Declaración de un objeto con un tipo personalizado
+  let flash: Hero = {
+    name: "Barry Allen",
+    age: 24,
+    powers: ["Super velocidad", "Viajar en el tiempo"],
+    getName(){
+      return this.name;
+    }
+  }
+```
+
+### Crear variables que soporten varios tipos a la vez
+
+Las variables pueden soportar ser declaradas con varios tipos de datos a las vez, para esto se debe indicar el tipo de dato que soporta la variable separado por `|`
+
+```Terminal
+  type Hero = {
+    name: string;
+    age?: number;
+    powers: number[];
+    getName?: () => string
+  }
+
+  let myCustomVariable: ( string | number | Hero )= 'Evan'; // Los paréntesis son opcionales 
+
+  myVariable = 20;
+  myVariable = true;
+```
+
+### Comprobar el tipo de objeto
+
+Para comprobar el tipo de dato de una variable se puede realizar con la palabra reservada `typeof` pero al verificarlo en javascript este retornara el tipo de dato que conoce Javascript, por lo que objetos personalizados no pueden ser visualizados.
+
+```Terminal
+  type Hero = {
+    name: string;
+    age?: number;
+    powers: number[];
+    getName?: () => string
+  }
+
+  let myCustomVariable: ( string | number | Hero )= 'Evan'; // Los paréntesis son opcionales 
+
+  myVariable = 20;
+  myVariable = true;
+
+  console.log(typeof myCustomVariable);
 ```
