@@ -329,3 +329,70 @@ Para comprobar el tipo de dato de una variable se puede realizar con la palabra 
 
   console.log(typeof myCustomVariable);
 ```
+
+## Depuración de errores y el archivo tsconfig.json
+
+### Qué es el archivo tsconfig.ts?
+
+El archivo tsconfig.json es un archivo de configuración de Typescript, en el se pueden indicar las configuraciones que se desean para el proyecto. En el cual podemos indicar el directorio donde se encuentra el código fuente, el directorio donde se guardaran los archivos compilados, el tipo de compilación que se desea, entre otras configuraciones.
+[tsconfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+
+### Depuración de código
+
+A veces el código necesita cosas mas profundas y en lugar de usar console.log para visualizar en debugger del navegador, pero este debugger muestra el numero de linea que aparece en el archivo JS mas no el de TS, para esto, podemos indicar en el archivo tsconfig que se genere un archivo de mapa de bits, para esto se debe indicar en el archivo tsconfig.json la propiedad `sourceMap` en `true`
+
+```json
+  {
+    "compilerOptions": {
+      "sourceMap": true
+    }
+  }
+```
+
+Esto nos ayudara a visualizar la linea de código en el archivo TS y no en el archivo JS.
+
+### Remover comentarios de los archivos de JavaScript
+
+La configuración que se necesita para remover comentarios en los archivos transpilados de Javascript es descomentar `removeComments` en `true`
+
+```json
+  {
+    "compilerOptions": {
+      "removeComments": true
+    }
+  }
+```
+
+### Incluir y excluir 
+
+Podemos hacer que el compilador de Typescript solo compile los archivos que necesitamos, para esto se debe indicar en el archivo tsconfig.json la propiedad `include` y `exclude` en un arreglo de strings con los directorios que se desean incluir o  en el proyecto.
+
+```json
+  {
+    "compilerOptions": {
+      "include": [
+        "src/**/*"
+      ],
+      "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+      ]
+    }
+  }
+```
+
+Por defecto la carpeta `node_modules` se excluye, por lo que no es necesario indicarla en el archivo tsconfig.json
+
+### outFile
+
+Al descomentar esta linea, indicamos que se debe generar un solo archivo de salida con el nombre que se indique en la propiedad `outFile`.
+
+```json
+  {
+    "compilerOptions": {
+      "outFile": "./main.js"
+    }
+  }
+```
+
+Lo cual genera que no existan multiples archivos .js por cada archivo .ts

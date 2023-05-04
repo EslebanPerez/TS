@@ -16,6 +16,7 @@ class Singleton{
   }
 
 }
+
 const singleton = Singleton.getInstance();
 const singleton2 = Singleton.getInstance();
 
