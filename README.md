@@ -363,7 +363,7 @@ La configuración que se necesita para remover comentarios en los archivos trans
   }
 ```
 
-### Incluir y excluir 
+### Incluir y excluir
 
 Podemos hacer que el compilador de Typescript solo compile los archivos que necesitamos, para esto se debe indicar en el archivo tsconfig.json la propiedad `include` y `exclude` en un arreglo de strings con los directorios que se desean incluir o  en el proyecto.
 
